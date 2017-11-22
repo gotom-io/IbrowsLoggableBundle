@@ -72,12 +72,15 @@ class ScheduledChangeableTypeExtension extends AbstractTypeExtension
     protected function checkIsScheduledChangeable(FormBuilderInterface $builder, $property)
     {
         $entity = $builder->getData();
-        if ($entity == null || !is_object($entity) || (method_exists($entity,'getId') && $entity->getId() == null) )  {
+        if ($entity == null || !is_object($entity))  {
             return false;
         }
         $class = get_class($entity);
         $reflectionClass = new \ReflectionClass($class);
         if (!$reflectionClass->implementsInterface('\Ibrows\LoggableBundle\Model\ScheduledChangeable')) {
+            return false;
+        }
+        if(!method_exists($entity,'getId') || !$entity->getId()){
             return false;
         }
         if (property_exists($class, $property)) {

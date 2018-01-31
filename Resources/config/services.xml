@@ -23,16 +23,11 @@
                 <argument type="service" id="logger"/>
             </call>
         </service>
-
-
-
-
         <service id="ibrows_loggable.scheduled_changeable_type_extension"
                  class="Ibrows\LoggableBundle\Form\ScheduledChangeableTypeExtension"
                 >
-            <tag name="form.type_extension" alias="form" />
+            <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType" />
         </service>
-
     </services>
 </container>
 

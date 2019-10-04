@@ -310,7 +310,7 @@ class LogRepository extends EntityRepository
 
     /**
      * @throws \RuntimeException
-     * @return \Gedmo\Loggable\LoggableListener
+     * @return LoggableListener
      */
     public function getLoggableListener()
     {
